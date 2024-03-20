@@ -27,14 +27,21 @@ function AllStudentsRender() {
 
         fetchData();
     }, []);
+
+    let eliminated =(id)=>{
+        console.log(id)
+    }
   return (
     <>
         <div className="container">
             <div className="row">
                 {
                     allStudentDat.map((studentsData) =>
+                    // {
+                    //     console.log(studentsData.id)
+                    // }
                     (
-                        <div className="col-lg-6 col-md-12 col-sm-12 rounded border">
+                        <div className="col-lg-6 col-md-12 col-sm-12 rounded border" key={studentsData.id}>
                     <div className="d-flex justify-content-between align-items-center p-3">
                         <div className="d-flex align-items-center">
                         <div className="border rounded-circle" style={{width : "50px" , height : "50px"}}>
@@ -49,7 +56,7 @@ function AllStudentsRender() {
                 <i className="fa-solid fa-ellipsis-vertical"></i>
                 </button>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <li className="dropdown-item" style={{cursor : 'pointer'}}>Eliminate</li>
+                  <li className="dropdown-item" style={{cursor : 'pointer'}}  onClick={()=> eliminated(studentsData.id)}>Eliminate</li>
                 </ul>
                 </div>
                 <div className="ps-4">
@@ -64,7 +71,8 @@ function AllStudentsRender() {
                     </div>
                 </div>
                 </div>
-                    ))
+                    )
+                    )
                 }
             </div>
         </div>
