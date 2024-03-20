@@ -28,7 +28,7 @@ function Navbar() {
           <Link className="nav-link active" aria-current="page" to={'/total teacher'}>All Teacher</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to={''}>All Students</Link>
+          <Link className="nav-link active" aria-current="page" to={'/total students'}>All Students</Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link active" aria-current="page" to={''}>Courses</Link>

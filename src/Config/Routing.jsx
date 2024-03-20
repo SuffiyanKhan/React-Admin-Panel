@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import TotallTeacher from '../Components/TotallTeacher/TotallTeacher'
 import Home from '../Components/Home/Home'
 import Navbar from '../Components/Navbar/Navbar'
+import AllStudents from '../Components/AllStudent/AllStudents'
 
 function Routing() {
   return (
@@ -14,6 +15,7 @@ function Routing() {
     <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/total teacher' element={<TotallTeacher/>}/>
+        <Route path='/total students' element={<AllStudents/>}/>
     </Routes>
     </BrowserRouter>
     </>
