@@ -1,6 +1,7 @@
 import React, { memo, useEffect, useState } from 'react';
 import { onSnapshot, collection, db } from '../../Config/Firebase';
-import logo from '../Images/logo.png';
+import userImage from '../Images/images-removebg-preview (1).png';
+import { Link } from 'react-router-dom';
 
 function AllTeachers() {
     const [data, setData] = useState([]);
@@ -33,15 +34,17 @@ function AllTeachers() {
         <div className="container">
             <div className="row">
                 {data.map((teacher) => (
-                    <TeacherCard key={teacher.id} teacher={teacher}  />
+                    <TeacherCard key={teacher.id} teacher={teacher} id={teacher.id}  />
+                    // console.log(teacher.id)
                 ))}
             </div>
         </div>
     );
 }
 
-const TeacherCard = ({ teacher }) => {
+const TeacherCard = ({ teacher, id }) => {
     const [totalCount, setTotalCount] = useState(0);
+    // console.log(id)
 
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, teacher.data().Name), (querySnapshot) => {
@@ -49,14 +52,16 @@ const TeacherCard = ({ teacher }) => {
         });
         return () => unsubscribe();
     }, [teacher]);
+    let Id =(id)=>{
+        console.log(id)
 
+    }
     return (
-        
         <div className="col-lg-6 col-md-6 col-sm-12 border py-3 px-4">
             <div className="d-flex justify-content-between align-items-center">
                 <div className="d-flex align-items-center">
                     <div className="border rounded-circle" style={{ width: "60px", height: "60px" }}>
-                        <img src={logo} className='img-fluid' style={{ objectFit: 'cover' }} alt="" />
+                        <img src={teacher.data().Image  ? teacher.data().Image :  userImage} className='img-fluid' style={{ objectFit: 'cover' }} alt="" />
                     </div>
                     <h4 className='ps-3 text-capitalize'>Sir {teacher.data().Name}</h4>
                 </div>
@@ -75,6 +80,7 @@ const TeacherCard = ({ teacher }) => {
                 <p className='fw-bold'>Timing : {teacher.data().Timming}</p>
                 <p className='fw-bold'>Days : {teacher.data().Days}</p>
                 </div>
+                <Link to={`/teacher details?user=${id}`} className='text-capitalize text-dark fw-bold' >see more detail</Link>
             </div>
         </div>
     );

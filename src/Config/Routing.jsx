@@ -4,6 +4,7 @@ import TotallTeacher from '../Components/TotallTeacher/TotallTeacher'
 import Home from '../Components/Home/Home'
 import Navbar from '../Components/Navbar/Navbar'
 import AllStudents from '../Components/AllStudent/AllStudents'
+import TeacherDetails from '../Components/TeacherDetails/TeacherDetails'
 
 function Routing() {
   return (
@@ -16,6 +17,7 @@ function Routing() {
         <Route path='/' element={<Home/>}/>
         <Route path='/total teacher' element={<TotallTeacher/>}/>
         <Route path='/total students' element={<AllStudents/>}/>
+        <Route path='/teacher details' element={<TeacherDetails/>}/>
     </Routes>
     </BrowserRouter>
     </>
